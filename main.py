@@ -6,7 +6,7 @@ import sys
 import os
 
 def activate_license(license_key):
-  machine_fingerprint = hashlib.sha256(str(get_mac())).hexdigest()
+  machine_fingerprint = hashlib.sha256(str(get_mac()).encode('utf-8')).hexdigest()
   validation = requests.post(
     "https://api.keygen.sh/v1/accounts/{}/licenses/actions/validate-key".format(os.environ['KEYGEN_ACCOUNT_ID']),
     headers={
