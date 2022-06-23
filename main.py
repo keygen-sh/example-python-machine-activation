@@ -38,12 +38,12 @@ def activate_license(license_key):
   # already been activated, or it may be invalid because it doesn't
   # have any activated machines associated with it yet and in that case
   # we'll need to activate one.
-  #
-  # NOTE: the "NO_MACHINE" status is unique to *node-locked* licenses. If
-  #       you need to implement a floating license, you may also need to
-  #       check for the "NO_MACHINES" status (note: plural) and also the
-  #       "FINGERPRINT_SCOPE_MISMATCH" status.
-  if validation["meta"]["constant"] != "NO_MACHINE":
+  validation_code = validation["meta"]["constant"]
+  activation_is_required = validation_code == 'FINGERPRINT_SCOPE_MISMATCH' or \
+                           validation_code == 'NO_MACHINES' or \
+                           validation_code == 'NO_MACHINE'
+
+  if not activation_is_required:
     return False, "license {}".format(validation["meta"]["detail"])
 
   # If we've gotten this far, then our license has not been activated yet,
