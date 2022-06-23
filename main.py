@@ -51,7 +51,7 @@ def activate_license(license_key):
   activation = requests.post(
     "https://api.keygen.sh/v1/accounts/{}/machines".format(os.environ['KEYGEN_ACCOUNT_ID']),
     headers={
-      "Authorization": "Bearer {}".format(os.environ['KEYGEN_ACTIVATION_TOKEN']),
+      "Authorization": "License {}".format(license_key),
       "Content-Type": "application/vnd.api+json",
       "Accept": "application/vnd.api+json"
     },
@@ -75,7 +75,7 @@ def activate_license(license_key):
     errs = activation["errors"]
 
     return False, "license activation failed: {}".format(
-      map(lambda e: "{} - {}".format(e["title"], e["detail"]).lower(), errs)
+      ','.join(map(lambda e: "{} - {}".format(e["title"], e["detail"]).lower(), errs))
     )
 
   return True, "license activated"
