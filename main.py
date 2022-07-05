@@ -38,7 +38,7 @@ def activate_license(license_key):
   # already been activated, or it may be invalid because it doesn't
   # have any activated machines associated with it yet and in that case
   # we'll need to activate one.
-  validation_code = validation["meta"]["constant"]
+  validation_code = validation["meta"]["code"]
   activation_is_required = validation_code == 'FINGERPRINT_SCOPE_MISMATCH' or \
                            validation_code == 'NO_MACHINES' or \
                            validation_code == 'NO_MACHINE'
