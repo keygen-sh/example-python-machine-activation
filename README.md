@@ -20,7 +20,7 @@ file and then run `source ~/.bashrc` after saving the file.
 Next, install dependencies with [`pip`](https://packaging.python.org/):
 
 ```
-pip3 install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ## Activating a machine

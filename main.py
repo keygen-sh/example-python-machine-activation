@@ -1,12 +1,11 @@
-from uuid import getnode as get_mac
+import machineid
 import requests
 import json
-import hashlib
 import sys
 import os
 
 def activate_license(license_key):
-  machine_fingerprint = hashlib.sha256(str(get_mac()).encode('utf-8')).hexdigest()
+  machine_fingerprint = machineid.hashed_id('example-app')
   validation = requests.post(
     "https://api.keygen.sh/v1/accounts/{}/licenses/actions/validate-key".format(os.environ['KEYGEN_ACCOUNT_ID']),
     headers={
