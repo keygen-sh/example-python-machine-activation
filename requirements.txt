@@ -1,2 +1,2 @@
-py-machineid==0.1.0
+py-machineid==0.2.1
 requests==2.28.0
