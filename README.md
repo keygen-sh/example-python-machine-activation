@@ -31,8 +31,8 @@ To perform a machine activation, run the script and supply a license key:
 python3 main.py some-license-key-here
 ```
 
-The script will use a SHA256 hash of your device's MAC address for the
-machine's fingerprint.
+The script will use a SHA256-HMAC of your device's [machineid](https://github.com/keygen-sh/py-machineid)
+for the machine's fingerprint.
 
 ## Questions?
 
