@@ -24,7 +24,7 @@ def activate_license(license_key):
     errs = validation["errors"]
 
     return False, "license validation failed: {}".format(
-      map(lambda e: "{} - {}".format(e["title"], e["detail"]).lower(), errs)
+      ','.join(map(lambda e: "{} - {}".format(e["title"], e["detail"]).lower(), errs))
     )
 
   # If the license is valid for the current machine, that means it has
